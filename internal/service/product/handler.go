@@ -97,22 +97,14 @@ func (h *Handler) UpdateProductHandler(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "invalid request body"})
 		return
 	}
-
 	productID := c.Param("id")
-	existingProduct, notFound, err := GetProductByID(c.Request.Context(), productID)
+	existingProduct, _, err := GetProductByID(c.Request.Context(), productID)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"message": "failed to fetch product"})
+		c.JSON(http.StatusNotFound, gin.H{"message": "product not found"})
 		return
 	}
-
-	if notFound != nil {
-		c.JSON(http.StatusNotFound, gin.H{"message": notFound.Message})
-		return
-	}
-
 	file, _ := c.FormFile("image")
 	if file != nil {
-
 		uploadPath := "./pkg/uploads/" + file.Filename
 		if err := os.MkdirAll("./pkg/uploads/", os.ModePerm); err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"message": "failed to create upload directory"})
@@ -123,7 +115,6 @@ func (h *Handler) UpdateProductHandler(c *gin.Context) {
 			c.JSON(http.StatusInternalServerError, gin.H{"message": "failed to upload image"})
 			return
 		}
-
 		if existingProduct.ImagePath != "" {
 			if err := os.Remove(existingProduct.ImagePath); err != nil {
 				log.Println("Failed to delete old image:", err)
@@ -135,6 +126,8 @@ func (h *Handler) UpdateProductHandler(c *gin.Context) {
 
 		req.ImagePath = existingProduct.ImagePath
 	}
+
+	req.ID = existingProduct.ID
 
 	err = UpdateProduct(c.Request.Context(), req)
 	if err != nil {
