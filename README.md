@@ -64,7 +64,9 @@ r.group.DELETE("/orders/:id", r.handler.DeleteOrderHandler)
 ### 1.1 Add Product
 
 **Endpoint**: `POST /products`
-**Deskripsi**: Menambahkan produk baru ke dalam sistem.
+
+**Deskripsi**: Menambahkan produk baru ke dalam sistem
+
 **Request Body**:
 
 Untuk menambahkan data produk baru, Anda dapat menggunakan format berikut:
@@ -96,7 +98,9 @@ Untuk menginput data produk menggunakan API atau form, pastikan Anda mengisi fie
 ### 1.2 Get All Product
 
 **Endpoint**: `GET /products`
+
 **Deskripsi**: Melihat semua daftar produk pada sistem
+
 **Output JSON**:
 
 ```json
@@ -180,7 +184,9 @@ Untuk menginput data produk menggunakan API atau form, pastikan Anda mengisi fie
 ### 1.3 Get Product By ID
 
 **Endpoint**: `GET /products/:id`
+
 **Deskripsi**: Melihat daftar produk berdasarkan ID pada sistem
+
 **Output JSON**:
 
 ```json
@@ -217,7 +223,9 @@ Untuk menginput data produk menggunakan API atau form, pastikan Anda mengisi fie
 ### 1.3 Update Product By ID
 
 **Endpoint**: `PUT /products/:id`
+
 **Deskripsi**: Memperbarui informasi produk berdasarkan ID produk
+
 **Request BODY JSON**:
 
 ```json
@@ -241,7 +249,9 @@ Untuk menginput data produk menggunakan API atau form, pastikan Anda mengisi fie
 ### 1.3 Delete Product By ID
 
 **Endpoint**: `DELETE /products/:id`
+
 **Deskripsi**: Menghapus daftar produk berdasarkan ID pada sistem
+
 **Response**:
 
 ```json
