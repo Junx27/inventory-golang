@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/Junx27/inventory-golang/internal/config"
+	"github.com/Junx27/inventory-golang/internal/service/inventory"
 	"github.com/Junx27/inventory-golang/internal/service/product"
 	"github.com/Junx27/inventory-golang/pkg/database"
 	"github.com/caarlos0/env/v11"
@@ -32,6 +33,7 @@ func main() {
 		log.Fatal(err.Error())
 	}
 	productHandler := product.NewHandler(cfg)
+	inventoryHandler := inventory.NewHandler(cfg)
 
 	var logger *zap.Logger
 	var mode string
@@ -60,6 +62,9 @@ func main() {
 
 	productRouter := product.NewRouter(productHandler, r.RouterGroup)
 	productRouter.Register()
+
+	inventoryRouter := inventory.NewRouter(inventoryHandler, r.RouterGroup)
+	inventoryRouter.Register()
 
 	r.GET("/", func(ctx *gin.Context) {
 		ctx.String(http.StatusOK, "server is run")
