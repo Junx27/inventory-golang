@@ -1,4 +1,3 @@
--- Membuat tabel products
 CREATE TABLE IF NOT EXISTS products (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -10,7 +9,6 @@ CREATE TABLE IF NOT EXISTS products (
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- Membuat tabel inventory dengan foreign key yang memiliki ON DELETE CASCADE
 CREATE TABLE IF NOT EXISTS inventory (
     id SERIAL PRIMARY KEY,
     product_id INT,
@@ -20,10 +18,9 @@ CREATE TABLE IF NOT EXISTS inventory (
     updated_at TIMESTAMPTZ DEFAULT NOW(),
     CONSTRAINT fk_product FOREIGN KEY (product_id) 
         REFERENCES products(id) 
-        ON DELETE CASCADE -- Menambahkan CASCADE delete di sini
+        ON DELETE CASCADE
 );
 
--- Membuat tabel orders dengan foreign key yang memiliki ON DELETE CASCADE
 CREATE TABLE IF NOT EXISTS orders (
     id SERIAL PRIMARY KEY,
     product_id INT,
@@ -33,5 +30,5 @@ CREATE TABLE IF NOT EXISTS orders (
     updated_at TIMESTAMPTZ DEFAULT NOW(),
     CONSTRAINT fk_product_order FOREIGN KEY (product_id) 
         REFERENCES products(id) 
-        ON DELETE CASCADE -- Menambahkan CASCADE delete di sini
+        ON DELETE CASCADE
 );
