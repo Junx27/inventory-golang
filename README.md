@@ -259,3 +259,225 @@ Untuk menginput data produk menggunakan API atau form, pastikan Anda mengisi fie
   "message": "product deleted successfully"
 }
 ```
+
+## 2. Inventory
+
+### 2.1 Add inventory
+
+**Endpoint**: `POST /inventory`
+
+**Deskripsi**: Menambahkan inventory baru ke dalam sistem
+
+**Request Body**:
+
+```json
+{
+  "product_id": 1,
+  "quantity": 100,
+  "location": "Gudang A"
+}
+```
+
+### 2.2 Get All inventory
+
+**Endpoint**: `GET /inventory`
+
+**Deskripsi**: Melihat semua daftar inventory pada sistem
+
+**Response**:
+
+```json
+{
+  "data": [
+    {
+      "id": 3,
+      "product_id": 3,
+      "quantity": 50,
+      "location": "Warehouse C",
+      "created_at": "2024-12-28T06:33:30.121135Z",
+      "updated_at": "2024-12-28T06:33:30.121135Z"
+    },
+    {
+      "id": 1,
+      "product_id": 1,
+      "quantity": 15,
+      "location": "Warehouse B",
+      "created_at": "2024-12-28T06:33:30.121135Z",
+      "updated_at": "2024-12-28T06:35:17.612894Z"
+    }
+  ]
+}
+```
+
+### 2.3 Get inventory By ID
+
+**Endpoint**: `GET /inventory/:id`
+
+**Deskripsi**: Melihat daftar inventory berdasarkan ID pada sistem
+
+**Response**:
+
+```json
+{
+  "data": {
+    "id": 3,
+    "product_id": 3,
+    "quantity": 50,
+    "location": "Warehouse C",
+    "created_at": "2024-12-28T06:33:30.121135Z",
+    "updated_at": "2024-12-28T06:33:30.121135Z"
+  }
+}
+```
+
+### 2. Update inventory By ID
+
+**Endpoint**: `PUT /inventory/:id`
+
+**Deskripsi**: Memperbarui daftar inventory berdasarkan ID pada sistem
+
+**Request Body JSON**:
+
+```json
+{
+  "product_id": 1,
+  "quantity": 150,
+  "location": "Gudang B"
+}
+```
+
+**Response**:
+
+```json
+{
+  "message": "inventory updated successfully"
+}
+```
+
+### 2.3 Delete inventory By ID
+
+**Endpoint**: `DELETE /inventory/:id`
+
+**Deskripsi**: Menghapus daftar inventory berdasarkan ID pada sistem
+
+**Response**:
+
+```json
+{
+  "message": "inventory deleted successfully"
+}
+```
+
+## 3. Order
+
+### 3.1 Add Order
+
+**Endpoint**: `POST /orders`
+
+**Deskripsi**: Menambahkan order baru ke dalam sistem
+
+**Request Body**:
+
+```json
+{
+  "product_id": 1,
+  "quantity": 2
+}
+```
+
+### 3.2 Get All Order
+
+**Endpoint**: `GET /orders`
+
+**Deskripsi**: Melihat semua daftar order pada sistem
+
+**Response**:
+
+```json
+{
+  "data": [
+    {
+      "id": 2,
+      "product_id": 2,
+      "quantity": 1,
+      "order_date": "2024-12-26T14:30:00Z",
+      "created_at": "2024-12-28T06:33:30.121135Z",
+      "updated_at": "2024-12-28T06:33:30.121135Z"
+    },
+    {
+      "id": 3,
+      "product_id": 3,
+      "quantity": 5,
+      "order_date": "2024-12-27T09:00:00Z",
+      "created_at": "2024-12-28T06:33:30.121135Z",
+      "updated_at": "2024-12-28T06:33:30.121135Z"
+    },
+    {
+      "id": 4,
+      "product_id": 1,
+      "quantity": 5,
+      "order_date": "2024-12-28T07:10:21.448878Z",
+      "created_at": "2024-12-28T07:10:21.448878Z",
+      "updated_at": "2024-12-28T07:10:21.448878Z"
+    }
+  ]
+}
+```
+
+### 3.3 Get Order By ID
+
+**Endpoint**: `GET /orders/:id`
+
+**Deskripsi**: Melihat daftar order berdasarkan ID pada sistem
+
+**Response**:
+
+```json
+{
+  "data": {
+    "id": 2,
+    "product_id": 2,
+    "quantity": 1,
+    "order_date": "2024-12-26T14:30:00Z",
+    "created_at": "2024-12-28T06:33:30.121135Z",
+    "updated_at": "2024-12-28T06:33:30.121135Z"
+  }
+}
+```
+
+### 3.4 Update Order By ID
+
+**Endpoint**: `PUT /orders/:id`
+
+**Deskripsi**: Memperbarui daftar order berdasarkan ID pada sistem
+
+**Request Body JSON**:
+
+```json
+{
+  "product_id": 1,
+  "quantity": 2
+}
+```
+
+**Response**:
+
+```json
+{
+  "message": "order updated successfully"
+}
+```
+
+### 3.5 Delete Order By ID
+
+**Endpoint**: `DELETE /orders/:id`
+
+**Deskripsi**: Menghapus daftar order berdasarkan ID pada sistem
+
+**Response**:
+
+```json
+{
+  "message": "order deleted successfully"
+}
+```
