@@ -3,7 +3,7 @@
 langkah-langkah menjalankan proyek, salin repository ke local komputer dengan cara:
 
 ```bash
-git@github.com:Junx27/inventory-golang.git
+git clone git@github.com:Junx27/inventory-golang.git
 cd inventory-golang
 ```
 
